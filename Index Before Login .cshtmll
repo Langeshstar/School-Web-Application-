@@ -1,0 +1,366 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hogwarts University</title>
+    <link rel="icon" href="~/Images/240_F_393308246_QPPiSakiDlAXgLZeM65QDZN26On4oRZ5-removebg-preview.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/CSS/Stylesheet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; 
+        }
+
+        #videoContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #container {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+
+
+        .content {
+            text-align: center;
+            z-index: 1; 
+            position: relative;
+            padding-top: 100px; 
+        }
+
+
+
+
+        #container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .background-clip {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Place video behind content */
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #imageCarousel {
+            margin-top: 20px;
+        }
+
+            #imageCarousel .carousel-inner {
+                height: 200px;
+            }
+
+            #imageCarousel .carousel-item {
+                background-size: cover;
+                background-position: center;
+                height: 100%;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar-dark bott">
+        <h1 class="justify-content-md-center  text-white bg-dark">
+            <img src="~/Images/Harry-Potter-Hogwarts-logo.jpg" alt="Login Image" style="height: 80px; width: 140px; margin-right: 10px; padding:10px;" class="rounded-circle" />
+            <i class="fa fa-university fa-xxl"></i>HogWarts University Official Website
+        </h1>
+    </nav>
+
+    <div id="container">
+        <video autoplay loop muted plays-inline class="background-clip">
+            <source src="~/images/Harry Potter_ Hogwarts Establishing Shots.mp4" type="video/mp4">
+        </video>
+
+        <div class="content justify-content-sm-around">
+            <h3>Welcome to Hogwarts University! <br /> If you are a student or teacher at Hogwarts University, please login using the button below:</h3>
+            <a id="loginButton" class="btn-primary" href="#" onclick="toggleLoginForm()">Login Here</a>
+        </div>
+
+        <div id="loginContainer" class="container" style="margin-top: 5%; display: none;">
+
+          <div class="row justify-content-center">
+                <div class="col-md-4  col-md-offset-4 alert alert-secondary position-relative">
+                  <a href="#" class="close" aria-label="Close" onclick="closeLoginForm()">&times;</a>
+
+                    <h2 class="text-center">
+                        <img src="~/Images/Harry-Potter-Hogwarts-logo.jpg" alt="Login Image" style="height: 80px; width: 140px; margin-right: 10px;" class="rounded-circle" />
+                        <br />
+                        HogWarts Login
+                    </h2>
+                    <div class="text-center container bg-dark bg-opacity-75 text-white rounded-pill">
+                        <!--student check point-->
+                        <div class="form-check d-inline-flex ">
+                            <input class="form-check-input" type="radio" name="userType" id="studentRadio" value="student" checked onchange="handleUserTypeChange()">
+                            <label class="form-check-label" for="studentRadio">
+                                Student
+                            </label>
+                        </div>
+                        <div class="form-check d-inline-flex ">
+                            <input class="form-check-input" type="radio" name="userType" id="teacherRadio" value="teacher" onchange="handleUserTypeChange()">
+                            <label class="form-check-label" for="teacherRadio">
+                                Teacher
+                            </label>
+                        </div>
+                    </div>
+                    <br />
+                    <form id="loginForm">
+                        <div id="msg" style="display: none;">
+                            <ul class="text-danger">Enter Your Username & Password</ul>
+                        </div>
+                        @*Student Login Form*@
+                        <div id="studentForm">
+                            <div class="form-group">
+                                <div class="input-group align-items-center">
+                                    <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-id-card fa-lg"></i></span>
+                                    <input class="form-control" type="text" name="Regno" id="Regno" placeholder="RegisterNumber" />
+                                </div>
+                                <br />
+                                <label for="Password"></label>
+                                <div class="input-group align-items-center">
+                                    <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-lock fa-lg"></i></span>
+                                    <input class="form-control" type="password" name="Password" id="password" placeholder="Password " />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary form-control" onclick="StudentLogin()"><i class="fas fa-sign-in-alt"></i> Student Login </button>
+                            </div>
+                        </div>
+                        @*Teacher Login Form*@
+                        <div id="teacherForm" style="display: none;">
+                            <div class="form-group">
+                                <div class="input-group align-items-center">
+                                    <span class="input-group-addon" style="padding-right: 10px;"><i class="fas fa-envelope fa-lg"></i></span>
+                                    <input class="form-control" type="email" name="Email" id="email" placeholder="Email" />
+                                </div>
+                                <br />
+                                <label for="Password"></label>
+                                <div class="input-group align-items-center">
+                                    <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-lock fa-lg"></i></span>
+                                    <input class="form-control" type="password" name="Password" id="passwrd" placeholder="Password " />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary form-control" onclick="TeacherLogin()"><i class="fas fa-sign-in-alt"></i> Teacher Login </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <br />
+                    <div class="form-group" id="studentsSignup">
+                        <a href="#" style="float: left">Forget Password ?</a>
+                        <a href="#" style="float: right; cursor: pointer" onclick="SignUp('student')" id="StudentSignUpLink">Sign Up</a>
+                    </div>
+                    <div class="form-group" id="teacherSignup" style="display: none;">
+                        <a href="#" style="float: left">Forget Password ?</a>
+                        <a href="#" style="float: right; cursor: pointer" onclick="SignUp('teacher')" id="TeacherSignUpLink">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* Design Model With Registration form*@
+    <div class="modal fade " id="ShowStudentModal" style="margin-top:8%;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h4 class="text-center">
+                        <img src="~/Images/Harry-Potter-Hogwarts-logo.jpg" alt="Login Image" style="height: 60px; width: 100px; margin-right: 10px;" />
+                        Student RegistrationForm
+                    </h4>
+                    <a href="#" class="fa fa-times" aria-hidden="true" data-dismiss="modal"></a>
+                </div>
+                <div id="messageStudent1">
+                    <div class="alert alert-success">
+                        <span class="fas fa-ok"></span><strong>Success Message! Your Registration Is Complete</strong>
+                    </div>
+                </div>
+                <div id="messageStudent2">
+                    <div class="alert alert-danger">
+                        <span class="fas fa-remove"></span><strong>Error Message! Your Registration Is Not Complete</strong>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form id="StudentRegistrationForm">
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-user fa-lg"></i></span>
+                                <input class="form-control" type="text" name="Username" id="user" placeholder="StudentName" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-id-card fa-lg"></i></span>
+                                <input class="form-control" type="text" name="Regno" id="Regno" placeholder="Register Number" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-graduation-cap fa-lg"></i></span>
+                                <input class="form-control" type="text" name="Class" id="Class" placeholder="Class" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class=" fa fa-lock fa-lg"></i></span>
+                                <input class="form-control" type="password" name="Password" id="Passwrd" placeholder="Password" />
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info form-control" onclick="SaveStudentForm()"><i class="fas fa-check"></i> Submit </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Registration form for teacher login*@
+    <div class="modal fade " id="ShowTeacherModal" style="margin-top:5%;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h4 class="text-center">
+                        <img src="~/Images/Harry-Potter-Hogwarts-logo.jpg" alt="Login Image" style="height: 60px; width: 100px; margin-right: 10px;" />
+                        Teacher Registration Form
+                    </h4>
+                    <a href="#" class="fa fa-times" aria-hidden="true" data-dismiss="modal"></a>
+                </div>
+                <div id="messageTeacher1">
+                    <div class="alert alert-success">
+                        <span class="fas fa-ok"></span><strong>Success Message! Your Registration Is Complete</strong>
+                    </div>
+                </div>
+                <div id="messageTeacher2">
+                    <div class="alert alert-danger">
+                        <span class="fas fa-remove"></span><strong>Error Message! Your Registration Is Not Complete</strong>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form id="TeacherRegistrationForm">
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fas fa-user fa-lg"></i></span>
+                                <input class="form-control" type="text" name="Username" id="Username" placeholder="TeacherName" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-book fa-lg"></i></span>
+                                <select class="form-control" name="Subjects" id="subjects">
+                                    <option value="">Select Subject</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="English">English</option>
+                                    <option value="Maths">Maths</option>
+                                    <option value="Science">Science</option>
+                                    <option value="Social">Social</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fa fa-graduation-cap fa-lg"></i></span>
+                                <select class="form-control" name="Class" id="class">
+                                    <option value="">Select Class</option>
+                                    <option value="10th">10th</option>
+                                    <option value="9th">9th </option>
+                                    <option value="8th">8th </option>
+                                    <option value="7th">7th </option>
+                                    <option value="6th">6th </option>
+                                    <!-- Add more classes as needed -->
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class="fas fa-envelope fa-lg"></i></span>
+                                <input class="form-control" type="email" name="Email" id="Email" placeholder="Email Address" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="input-group align-items-center">
+                                <span class="input-group-addon" style="padding-right: 10px;"><i class=" fas fa-lock fa-lg"></i></span>
+                                <input class="form-control" type="password" name="Password" id="Password" placeholder="Password" />
+                            </div>
+                        </div>
+
+                    </form>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info form-control" onclick="SaveTeacherForm()"><i class="fas fa-check"></i> Submit </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h2>
+
+            </h2>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/JavaScript/Loginform.js"></script>
+
