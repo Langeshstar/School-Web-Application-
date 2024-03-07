@@ -1,0 +1,101 @@
+@model Hogword_University__Web_Design.Models.DBModel
+
+@{
+    ViewBag.Title = "AfterLogin";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+</head>
+<body>
+    <div class="content">
+
+        <br />
+
+        @if (ViewBag.UserType == "Student")
+        {
+            <div id="studentDetails" class="user-details container bg-black bg-opacity-50 rounded-4">
+                <br />
+                <h3>Student Name: @ViewBag.UserName</h3>
+                <h3>Register Number: @ViewBag.RegNo</h3>
+                <h3>Class: @ViewBag.Class</h3>
+                <br />
+            </div>
+        }
+        <!-- Add this to display teacher details -->
+        @if (ViewBag.UserType == "Teacher")
+        {
+            <div id="teacherDetails" class="user-details container bg-black bg-opacity-50 rounded-4">
+                <h3>Teacher Name: @ViewBag.UserName</h3>
+                <h3>Subject: @ViewBag.Subjects</h3>
+                <h3>Class: @ViewBag.Class</h3>
+            </div>
+        }
+
+    </div>
+
+    <div>
+        <div id="container">
+            <video autoplay loop muted plays-inline class="background-clip rounded-4">
+                <source src="~/images/Harry Potter_ Hogwarts Establishing Shots.mp4" type="video/mp4">
+            </video>
+            </div>
+            <main>
+                <section class="row fade-in" aria-labelledby="aspnetTitle">
+                    <h1 id="title">Magical Path of Career Growth</h1>
+                    <p class="lead">Hogworts University is a free career growth for building great knowledge and using HTML, CSS, and JavaScript.</p>
+                </section>
+
+                <div class="row">
+                    <section class="col-md-4 fade-in" aria-labelledby="gettingStartedTitle">
+                        <img src="~/Images/Harry-Potter-Hogwarts-logo.jpg" alt="Getting Started Image" class="img-fluid">
+                        <h2 id="gettingStartedTitle">Hogwarts University</h2>
+                        <p>
+                            Welcome to Hogwarts University, where magic meets education in an enchanting blend of academic excellence and mystical wonders.
+                            At Hogwarts, we believe in nurturing young minds to unlock their full potential and embark on a magical journey of knowledge and self-discovery.
+                        </p>
+                        <p><a class="btn btn-outline-light" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                    </section>
+
+                    <section class="col-md-4 fade-in" aria-labelledby="librariesTitle">
+                        <img src="~/Images/5954121.jpg" alt="Libraries Image" class="img-fluid">
+                        <h2 id="librariesTitle">Sports and Athletics:</h2>
+                        <p>
+                            Hogwarts takes pride in promoting a healthy and active lifestyle. Our Quidditch matches are legendary,
+                            providing a thrilling spectacle of skill and teamwork. Whether you're a seeker, chaser, beater, or keeper,
+                            there's a place for you on our Quidditch teams.
+                        </p>
+                        <p><a class="btn btn-outline-light" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+                    </section>
+
+                    <section class="col-md-4 fade-in" aria-labelledby="hostingTitle">
+                        <img src="~/Images/Dancers-from-ABCD-Any-Body-Can-Dance-Movie-still.jpg" alt="Hosting Image" class="img-fluid">
+                        <h2 id="hostingTitle">Cultural Events</h2>
+                        <p>
+                            Immerse yourself in the rich wizarding culture at Hogwarts. From enchanting Yule Balls to mesmerizing Triwizard Tournaments, our school hosts a variety of events that celebrate the magical arts, fostering a sense of community and camaraderie.
+                        </p>
+                        <p><a class="btn btn-outline-light" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                    </section>
+
+                    <section class="col-md-4">
+                        <img src="~/Images/243056.jpg" alt="Extracurricular Activities Image" class="img-fluid">
+                        <h2>Extracurricular Activities:</h2>
+                        <p>
+                            Explore your magical talents beyond the classroom with our diverse range of extracurricular activities. From dueling clubs to magical creature care, Hogwarts offers numerous opportunities for students to discover and hone their unique skills.
+                        </p>
+                        <p><a class="btn btn-outline-light" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+</body>
+</html>
+
+
+
+
